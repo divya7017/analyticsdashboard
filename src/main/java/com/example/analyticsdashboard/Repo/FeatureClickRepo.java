@@ -36,7 +36,7 @@ public interface FeatureClickRepo extends JpaRepository<FeatureClick, Long> {
     JOIN f.user u
     WHERE  
      (:startDate IS NULL OR f.timestamp >= :startDate)
-    AND (:endDate IS NULL OR f.timestamp <= :endDate)
+    AND (:endDate IS NULL OR f.timestamp < :endDatePlusOneDay)
     AND (:gender IS NULL OR u.gender = :gender)
     AND (:minAge IS NULL OR u.age >= :minAge)
     AND (:maxAge IS NULL OR u.age <= :maxAge)
